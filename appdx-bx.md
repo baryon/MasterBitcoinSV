@@ -82,7 +82,6 @@ wif-to-ec
 wif-to-public
 wrap-decode
 wrap-encode
-
 ```
 
 更多信息参见[Bitcoin Explorer homepage](#) 和 [Bitcoin Explorer user documentation](#)
@@ -97,7 +96,6 @@ bx命令使用示例
 $ bx seed | bx ec-new > private_key
 $ cat private_key
 73096ed11ab9f1db6135857958ece7d73ea7c30862145bcc4bbc7649075de474
-
 ```
 
 现在，使用ec-to-public命令从私钥生成公钥。 我们将private_key文件传递到标准输入并将命令的标准输出保存到新文件public_key中：
@@ -106,7 +104,6 @@ $ cat private_key
 $ bx ec-to-public < private_key > public_key
 $ cat public_key
 02fca46a6006a62dfdd2dbb2149359d0d97a04f430f12a7626dd409256c12be500
-
 ```
 
 我们可以使用ec-to-address命令将public_key重新格式化为一个地址。 我们将public_key传递给标准输入：
@@ -114,7 +111,6 @@ $ cat public_key
 ```
 $ bx ec-to-address < public_key
 17re1S4Q8ZHyCP8Kw7xQad1Lr6XUzWUnkG
-
 ```
 
 以这种方式产生的密钥产生零型非确定性钱包。 这意味着每个密钥都是由一个独立的种子生成的。 Bitcoin Explorer命令也可以根据BIP-32确定性地生成密钥。 在这种情况下，从种子创建“主”键，然后确定性地扩展以产生一个子项的树，从而产生一个2类确定性钱包。
@@ -130,7 +126,6 @@ eb68ee9f3df6bd4441a9feadec179ff1
 $ bx hd-new < seed > master
 $ cat master
 xprv9s21ZrQH143K2BEhMYpNQoUvAgiEjArAVaZaCTgsaGe6LsAnwubeiTcDzd23mAoyizm9cApe51gNfLMkBqkYoWWMCRwzfuJk8RwF1SVEpAQ
-
 ```
 
 我们现在使用hd-private命令在帐户中生成一个强化的“帐户”键和两个私钥序列：
@@ -147,7 +142,6 @@ xprv9xHfb6w1vX9xgZyPNXVgAhPxSsEkeRcPHEUV5iJcVEsuUEACvR3NRY3fpGhcnBiDbvG4LgndirDs
 
 $ bx hd-private --index 1 < account
 xprv9xHfb6w1vX9xjc8XbN4GN86jzNAZ6xHEqYxzbLB4fzHFd6VqCLPGRZFsdjsuMVERadbgDbziCRJru9n6tzEWrASVpEdrZrFidt1RDfn4yA3
-
 ```
 
 接下来，我们使用hd-public命令来生成两个公钥的相应序列：
@@ -159,7 +153,6 @@ xpub6BH1zcTuktiFu43rUZ2gXqLgzu5F3tLEeTQ5t6iE3aQtM2VMTxMcyLN9fYHiGhGpQe9QQYmqL2eY
 
 $ bx hd-public --index 1 < account
 xpub6BH1zcTuktiFx6CzhPbGjG3UYQ13WR16CmtbPiagEKpEVtpyjshWyMaMV1cn7nUPUkgQHPVXJVqsrA8xWbGQDhohEcDFTEYMvYzwRD7Juf8
-
 ```
 
 公钥也可以使用hd-to-public命令从其相应的私钥派生：
@@ -171,7 +164,6 @@ xpub6BH1zcTuktiFu43rUZ2gXqLgzu5F3tLEeTQ5t6iE3aQtM2VMTxMcyLN9fYHiGhGpQe9QQYmqL2eY
 
 $ bx hd-private --index 1 < account | bx hd-to-public
 xpub6BH1zcTuktiFx6CzhPbGjG3UYQ13WR16CmtbPiagEKpEVtpyjshWyMaMV1cn7nUPUkgQHPVXJVqsrA8xWbGQDhohEcDFTEYMvYzwRD7Juf8
-
 ```
 
 我们可以在确定性链中产生几乎无限数量的密钥，全部来源于单个种子。 这种技术用于许多钱包应用程序中以生成可以使用单个种子值进行备份和恢复的密钥。 每次创建一个新的密钥时，这比将其所有随机生成的密钥备份在一起更容易。
@@ -181,7 +173,6 @@ xpub6BH1zcTuktiFx6CzhPbGjG3UYQ13WR16CmtbPiagEKpEVtpyjshWyMaMV1cn7nUPUkgQHPVXJVqs
 ```
 $ bx hd-mnemonic < seed > words
 adore repeat vision worst especially veil inch woman cast recall dwell appreciate
-
 ```
 
 然后可以使用mnemonic-decode命令对种子进行解码：
@@ -189,7 +180,6 @@ adore repeat vision worst especially veil inch woman cast recall dwell appreciat
 ```
 $ bx mnemonic-decode < words
 eb68ee9f3df6bd4441a9feadec179ff1
-
 ```
 
 助记符编码可以使种子更容易记录甚至记住。

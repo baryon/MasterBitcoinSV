@@ -1,5 +1,3 @@
-
-
 * [原版序言](preface.md)
 
 * [中文版序言](cn-preface.md)
@@ -47,5 +45,3 @@
 * [附录E：pycoin库、实用密钥程序ku和交易程序tx](fappdx-pycoin.md)
 
 * [附录F：Bitcoin Explorer（bx）命令](appdx-bx.md)
-
-  

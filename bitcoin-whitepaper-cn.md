@@ -1,6 +1,5 @@
 # 附录A-2、比特币白皮书（李笑来中英文对照版）
 
-
 2008 年 10 月 31 日，中本聪发布了《[比特币白皮书](https://bitcoin.org/bitcoin.pdf)》。
 
 网上有若干个版本的《比特币白皮书》中文翻译版本：
@@ -30,14 +29,12 @@
 
 其实吧，我知道，这东西真没几个人认真看的…… 十年过来，一如既往地如此。
 
-
-
 **Bitcoin: A Peer-to-Peer Electronic Cash System**
 
 比特币：一种点对点电子现金系统
 
 > **Abstract.** A purely peer-to-peer version of electronic cash would allow online payments to be sent directly from one party to another without going through a financial institution. Digital signatures provide part of the solution, but the main benefits are lost if a trusted third party is still required to prevent double-spending. We propose a solution to the double-spending problem using a peer-to-peer network. The network timestamps transactions by hashing them into an ongoing chain of hash-based proof-of-work, forming a record that cannot be changed without redoing the proof-of-work. The longest chain not only serves as proof of the sequence of events witnessed, but proof that it came from the largest pool of CPU power. As long as a majority of CPU power is controlled by nodes that are not cooperating to attack the network, they'll generate the longest chain and outpace attackers. The network itself requires minimal structure. Messages are broadcast on a best effort basis, and nodes can leave and rejoin the network at will, accepting the longest proof-of-work chain as proof of what happened while they were gone.
->
+> 
 > **概要**：一个纯粹的点对点版本的电子现金系统，将允许在线支付直接从一方发送到另一方，而无需通过金融机构。数字签名虽然提供了部分解决方案，但，若是仍然需要被信任的第三方来防止双重支出的话，那么电子支付的主要优势就被抵消了。我们提出一个方案，使用点对点网络去解决双重支出问题。点对点网络将为每笔交易标记时间戳，方法是：把交易的散列数据录入一个不断延展的、以散列为基础的工作证明链上，形成一个如非完全重做就不可能改变的记录。最长链，一方面用来证明已被见证的事件及其顺序，与此同时，也用来证明它来自于最大的 CPU 算力池。只要绝大多数 CPU 算力被良性节点控制 —— 即，它们不与那些尝试攻击网络的节点合作 —— 那么，良性节点将会生成最长链，并且在速度上超过攻击者。这个网络本身需要最小化的结构。信息将以最大努力为基本去传播，节点来去自由；但，加入之时总是需要接受最长的工作证明链作为它们未参与期间所发生之一切的证明。
 
 ------
@@ -207,6 +204,7 @@ $$
 \large q_z &=& \text{ 攻击者落后 $z$ 个区块却依然能够赶上的概率}
 \end{eqnarray*}
 $$
+
 $$
 \large q_z = \begin{Bmatrix}
 1 & \textit{if}; p \leq q\
@@ -215,8 +213,6 @@ $$
 $$
 
 ![1.png](https://upload-images.jianshu.io/upload_images/1785959-ffa3086f27ca1925.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
 
 Given our assumption that , the probability drops exponentially as the number of blocks the attacker has to catch up with increases. With the odds against him, if he doesn't make a lucky lunge forward early on, his chances become vanishingly small as he falls further behind.
 
@@ -234,8 +230,6 @@ The recipient waits until the transaction has been added to a block and blocks h
 
 　　收款人等到此笔交易被打包进区块，并已经有 个区块随后被加入。他并不知道攻击者的工作进展究竟如何，但是可以假定诚实区块在每个区块生成过程中耗费的平均时间；攻击者的潜在进展符合泊松分布，其期望值为：
 
-
-
 $$
 \large \lambda = z \frac qp
 $$
@@ -245,8 +239,6 @@ $$
 To get the probability the attacker could still catch up now, we multiply the Poisson density for each amount of progress he could have made by the probability he could catch up from that point:
 
 　　为了算出攻击者依然可以赶上的概率，我们要把每一个攻击者已有的进展的帕松密度乘以他可以从那一点能够追上来的概率：
-
-
 
 $$
 \large \sum_{k=0}^{\infty} \frac{\lambda^k e^{-\lambda}}{k!} \cdot
@@ -261,8 +253,6 @@ $$
 Rearranging to avoid summing the infinite tail of the distribution...
 
 为了避免对密度分布的无穷级数求和重新整理…
-
-
 
 $$
 \large 1 - \sum_{k=0}^{z} \frac{\lambda^k e^{-\lambda}}{k!}
@@ -311,7 +301,7 @@ Running some results, we can see the probability drop off exponentially with .
    z=8    P=0.0000173
    z=9    P=0.0000046
    z=10   P=0.0000012
-   
+
    q=0.3
    z=0    P=1.0000000
    z=5    P=0.1773523
@@ -360,5 +350,3 @@ We have proposed a system for electronic transactions without relying on trust. 
 > 6. A. Back, "Hashcash - a denial of service counter-measure," [http://www.hashcash.org/papers/hashcash.pdf](http://www.btcpapers.com/hashcash.pdf), 2002.
 > 7. R.C. Merkle, "Protocols for public key cryptosystems," In Proc. 1980 Symposium on Security and Privacy, IEEE Computer Society, pages 122-133, April 1980.
 > 8. W. Feller, "An introduction to probability theory and its applications," 1957.
-
-

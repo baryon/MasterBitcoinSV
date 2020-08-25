@@ -1,3 +1,5 @@
+# Bitcoin SV批注版
+
 郎咸平说过：比特币白给我都不要
 
 巴菲特：比特币是泡沫，不是一种能够生产价值的资产
@@ -88,16 +90,11 @@ https://item.jd.com/12620946.html
 
 乔延宏  2020.7.30
 
-
-
 鸣谢:
 
 区块链研习社
 
 [![云天明区块链数据导航](http://ytm.ltd/zb_users/upload/ytm.ltd.png)](http://ytm.ltd)
-
-
-
 
 ## Mastering Bitcoin - Second Edition 版权说明
 
@@ -106,4 +103,3 @@ The tags, [second_edition_print_1](https://github.com/bitcoinbook/bitcoinbook/re
 [![Creative Commons License](../../qukuailian/%E7%B2%BE%E9%80%9A%E6%96%B0%E7%BF%BB%E8%AF%91/images/68747470733a2f2f692e6372656174697665636f6d6d6f6e732e6f72672f6c2f62792d73612f342e302f38387833312e706e67.png)](http://creativecommons.org/licenses/by-sa/4.0/)
 
 Mastering Bitcoin - Second Edition by [Andreas M. Antonopoulos LLC](https://antonopoulos.com/) is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
-
