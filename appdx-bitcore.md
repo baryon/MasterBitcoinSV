@@ -1,32 +1,30 @@
-# 附录4 Bitcore
+# 附录D Bitcore
 Bitcore是BitPay提供的一套工具。 其目标是为Bitcoin开发人员提供易于使用的工具。 几乎所有的Bitcore的代码都是用JavaScript编写的。 有一些专门为NodeJS编写的模块。 最后，Bitcore的“节点”模块包括Bitcoin Core的C ++代码。 有关详细信息，请参阅[https://bitcore.io](https://bitcore.io/)。
 
 ## Bitcore的功能列表
 
-Bitcoin full node \(bitcore-node\)  
-Block explorer \(insight\)  
-Block, transaction, and wallet utilities \(bitcore-lib\)  
-Communicating directly with Bitcoin’s P2P network \(bitcore-p2p\)  
-Seed entropy mnemonic generation（种子熵助记符） \(bitcore-mnemonic\)  
-Payment protocol \(bitcore-payment-protocol\)  
-Message verification and signing \(bitcore-message\)  
-Elliptic curve Integrated Encryption Scheme（椭圆曲线综合加密方案） \(bitcore-ecies\)  
-Wallet service \(bitcore-wallet-service\)  
-Wallet client \(bitcore-wallet-client\)  
-Playground \(bitcore-playground\)  
-Integrating services directly with Bitcoin Core \(bitcore-node\)
+* Bitcoin full node \(bitcore-node\)  
+* Block explorer \(insight\) 
+* Block, transaction, and wallet utilities \(bitcore-lib\)
+* Communicating directly with Bitcoin’s P2P network \(bitcore-p2p\)
+* Seed entropy mnemonic generation（种子熵助记符） \(bitcore-mnemonic\)
+* Payment protocol \(bitcore-payment-protocol\)
+* Message verification and signing \(bitcore-message\)
+* Elliptic curve Integrated Encryption Scheme（椭圆曲线综合加密方案） \(bitcore-ecies\)
+* Wallet service \(bitcore-wallet-service\)
+* Wallet client \(bitcore-wallet-client\)
+* Integrating services directly with Bitcoin Core \(bitcore-node\)
 
 ## Bitcore库示例
 
 ### 先决条件
 
-NodeJS &gt;= 4.x 或者使用[hosted online playground](https://bitcore.io/playground)
+* NodeJS &gt;= 4.x 
 
 如果使用NodeJS和节点REPL：
 
 ```
 $ npm install -g bitcore-lib bitcore-p2p
-$ NODE_PATH=$(npm list -g | head -1)/node_modules node
 ```
 
 ### 使用bitcore-lib的钱包示例
@@ -52,7 +50,7 @@ $ NODE_PATH=$(npm list -g | head -1)/node_modules node
 ```
 > utxo = {
   txId: transaction id containing an unspent output,
-  outputIndex: output indexi e.g. 0,
+  outputIndex: output index e.g. 0,
   address: addressOfUtxo,
   script: bitcore.Script.buildPublicKeyHashOut(addressOfUtxo).toString(),
   satoshis: amount sent to the address
@@ -80,10 +78,10 @@ $ NODE_PATH=$(npm list -g | head -1)/node_modules node
 ```
 
 将交易广播到比特币网络（注意：仅广播有效交易;请参阅[https://bitnodes.21.co/nodes](https://bitnodes.21.co/nodes)）：  
-将以下代码复制到名为broadcast.js的文件中。  
-tx和rbfTx变量分别是tx.serialize（）和rbfTx.serialize（）的输出。  
-为了更换费用，对等人必须支持bitcoind选项mempoolreplace并将其设置为1。  
-运行文件节点broadcast.js：
+1.将以下代码复制到名为broadcast.js的文件中。  
+2.tx和rbfTx变量分别是tx.serialize（）和rbfTx.serialize（）的输出。  
+3.为了更换费用，对等端必须支持bitcoind选项mempoolreplace并将其设置为1。  
+4.运行文件节点broadcast.js：
 
 ```
 var p2p = require('bitcore-p2p');
