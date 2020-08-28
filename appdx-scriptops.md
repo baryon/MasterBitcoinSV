@@ -1,6 +1,6 @@
 # 附录B、交易脚本语言操作符，常量和符号
 
-以下的表和描述参见[Opcodes used in Bitcoin Script - Bitcoin Wiki](https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script) 和<https://en.bitcoin.it/wiki/Script>
+> 原内容来源于[Opcodes used in Bitcoin Script - Bitcoin Wiki](https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script) 和[Script - Bitcoin Wiki](https://en.bitcoin.it/wiki/Script) 基于CC3.0在原作的基础上已经被修订和更新。中文翻译来自[MasterBitcoin2CN/appdx-scriptops.md at master · tianmingyun/MasterBitcoin2CN · GitHub](https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/appdx-scriptops.md) 基于 CC BY-SA 4.0 做了修订和更新
 
 这里是所有 比特币脚本操作符，也称为关键词、命令或函数。False 是零或负零(使用了任意数量的字节)或空数组，而 True 是其他任何东西。
 
@@ -8,14 +8,14 @@
 
 | 符号               | 值 (十六进制)     | 输入        | 输出            | 描述                             |
 | ---------------- | ------------ | --------- | ------------- | ------------------------------ |
-| OP_0 or OP_FALSE | 0x00         | Nothing   | (empty value) | 一个字节空串被压入堆栈中                   |
+| OP_0 or OP_FALSE | 0x00         | Nothing   | (empty value) | 把一个空的字节压入堆栈                    |
 | 1-75             | 0x01-0x4b    | (special) | data          | 把接下来的N 个字节压入堆栈中，N 的取值在1 到75 之间 |
-| OP_PUSHDATA1     | 0x4c         | (special) | data          | 下一个脚本字节包括N，会将接下来的N 个字节压入堆栈     |
-| OP_PUSHDATA2     | 0x4d         | (special) | data          | 下两个脚本字节包括N，会将接下来的N 个字节压入堆栈     |
-| OP_PUSHDATA4     | 0x4e         | (special) | data          | 下四个脚本字节包括N，会将接下来的N 个字节压入堆栈     |
-| OP_1NEGATE       | 0x4f         | Nothing   | -1            | 将脚本-1 压入堆栈                     |
-| OP_1 or OP_TRUE  | 0x51         | Nothing   | 1             | 将脚本1 压入堆栈                      |
-| OP_2 to OP_16    | 0x52 to 0x60 | Nothing   | 2-16          | 将脚本N 压入堆栈，例如OP_2 压入脚本“2”       |
+| OP_PUSHDATA1     | 0x4c         | (special) | data          | 下一个字节包括数字N，会将接下来的N 个字节压入堆栈     |
+| OP_PUSHDATA2     | 0x4d         | (special) | data          | 下面两个字节包括数字N，会将接下来的N 个字节压入堆栈    |
+| OP_PUSHDATA4     | 0x4e         | (special) | data          | 下面四个字节包括数字N，会将接下来的N 个字节压入堆栈    |
+| OP_1NEGATE       | 0x4f         | Nothing   | -1            | 将数字-1 压入堆栈                     |
+| OP_1 or OP_TRUE  | 0x51         | Nothing   | 1             | 将数字1 压入堆栈                      |
+| OP_2 to OP_16    | 0x52 to 0x60 | Nothing   | 2-16          | 将数字N 压入堆栈，例如OP_2 压入数字2         |
 
 ## 程序流控制操作符
 
@@ -30,7 +30,7 @@
 | OP_ELSE     | 0x67     |              |                  | 如果前述的OP_IF 或OP_NOTIF 或OP_ELSE 未被执行，这些语句就会被执行                                                                                                                                                                                           |
 | OP_ENDIF    | 0x68     |              |                  | 终止OP_IF, OP_NOTIF, OP_ELSE 区块                                                                                                                                                                                                          |
 | OP_VERIFY   | 0x69     | True / False | Nothing / Fail   | 如果栈项元素值非真，则标记交易无效。栈顶元素被删除。                                                                                                                                                                                                             |
-| OP_RETURN   | 0x6a     | Nothing      | 结束脚本。栈顶元素是脚本最终结果 | OP_ Return 还可用于创建“ False Return”输出，其中 scriptPubKey 由 OP_FALE OP _ Return 和数据组成。这样的输出是不可花费的的，并且应该给出一个零值。可以从 UTXO数据集的存储中删除这些输出，从而减小其大小。目前，BitcoinSV 网络支持在给定交易中的有多个 FALSE RETURN 输出，最初每个输出最多可以容纳100KB 的数据。在2020年创世升级之后，根据矿工的设置可包含任何大小的数据。 |
+| OP_RETURN   | 0x6a     | Nothing      | 结束脚本。栈顶元素是脚本最终结果 | OP_ Return 还可用于创建“ False Return”输出，其中 scriptPubKey 由 OP_FALE OP _RETURN 和数据组成。这样的输出是不可花费的，并且应该给出一个零Satoshi值。可以从 UTXO数据集存储中删除这些输出，从而减小大小。目前BitcoinSV 网络支持在给定交易中包含多个 FALSE RETURN 输出，最初每个输出可以容纳100KB 的数据。在2020年创世升级之后，根据矿工的设置可包含任何大小的数据。 |
 
 ## 堆栈操作符
 
@@ -156,4 +156,4 @@
 | OP_RESERVED2              | 0x8a            | 除非放在未执行的 OP_IF 分支中，否则交易无效 |
 | OP_NOP1, OP_NOP4-OP_NOP10 | 0xb0, 0xb3-0xb9 | 忽略该操作符。不将交易标记为无效。         |
 
-###### 原内容来源于 https://en.bitcoin.it/wiki/script 基于CC3.0在原作的基础上已经被修订和更新。中文翻译来自[MasterBitcoin2CN/appdx-scriptops.md at master · tianmingyun/MasterBitcoin2CN · GitHub](https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/appdx-scriptops.md) 基于 CC BY-SA 4.0 做了修订和更新
+###### 
