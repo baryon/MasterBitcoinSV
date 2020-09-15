@@ -1,10 +1,6 @@
 # 基于 BIP-32 和 BIP-39 规范生成 HD 钱包（分层确定性钱包）
 
-
-
 [基于 BIP-32 和 BIP-39 规范生成 HD 钱包（分层确定性钱包） | 未来边缘](https://stevenocean.github.io/2018/09/23/generate-hd-wallet-by-bip39.html)
-
-
 
 ## 关于 Bitcoin 的钱包
 

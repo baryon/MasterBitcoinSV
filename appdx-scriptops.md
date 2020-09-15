@@ -1,6 +1,6 @@
 # 附录B、交易脚本语言操作符，常量和符号
 
-> 原内容来源于[Opcodes used in Bitcoin Script - Bitcoin Wiki](https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script) 和[Script - Bitcoin Wiki](https://en.bitcoin.it/wiki/Script) 基于CC3.0在原作的基础上已经被修订和更新。中文翻译来自[MasterBitcoin2CN/appdx-scriptops.md at master · tianmingyun/MasterBitcoin2CN · GitHub](https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/appdx-scriptops.md) 基于 CC BY-SA 4.0 做了修订和更新
+> 原内容来源于[Opcodes used in Bitcoin Script - Bitcoin Wiki](https://wiki.bitcoinsv.io/index.php/Opcodes_used_in_Bitcoin_Script) 和[Script - Bitcoin Wiki](https://en.bitcoin.it/wiki/Script) 基于CC 3.0 做了修订和更新。中文翻译来自[MasterBitcoin2CN-appdx-scriptops](https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/appdx-scriptops.md) 基于 CC BY-SA 4.0 做了修订和更新
 
 这里是所有 比特币脚本操作符，也称为关键词、命令或函数。False 是零或负零(使用了任意数量的字节)或空数组，而 True 是其他任何东西。
 
@@ -56,15 +56,15 @@
 | OP_SWAP         | 0x7c     | x1 x2               | x2 x1              | 栈顶的三个元素交换            |
 | OP_TUCK         | 0x7d     | x1 x2               | x2 x1 x2           | 拷贝栈顶元素并插入到栈顶第二个元素之后  |
 
-## 字符串接操作
+## 字符串操作
 
-| 符号          | 值 (十六进制) | 输入    | 输出      | 描述                       |
-| ----------- | -------- | ----- | ------- | ------------------------ |
-| *OP_CAT*    | 0x7e     | x1 x2 | out     | 连接两个字符串                  |
-| *OP_SUBSTR* | 0x7f     | x n   | x1 x2   | 返回字符串的一部分                |
-| *OP_LEFT*   | 0x80     | a b   | out     | 在一个字符串中保留左边指定长度的子串       |
-| *OP_RIGHT*  | 0x81     | x     | out     | 在一个字符串中保留右边指定长度的子串       |
-| OP_SIZE     | 0x82     | in    | in size | 把栈顶元素的字符串长度压入堆栈（原字符串不出栈） |
+| 符号           | 值 (十六进制) | 输入    | 输出      | 描述                       |
+| ------------ | -------- | ----- | ------- | ------------------------ |
+| *OP_CAT*     | 0x7e     | x1 x2 | out     | 连接两个字符串                  |
+| *OP_SPLIT*   | 0x7f     | x n   | x1 x2   | 在位置 n 处拆分字节序列 x          |
+| *OP_NUM2BIN* | 0x80     | a b   | out     | 将数值 a 转换为长度为 b 的字节序列     |
+| *OP_BIN2NUM* | 0x81     | x     | out     | 将字节序列 x 转换为数值            |
+| OP_SIZE      | 0x82     | in    | in size | 把栈顶元素的字符串长度压入堆栈（原字符串不出栈） |
 
 ## 二进制算术和条件
 
@@ -85,8 +85,8 @@
 | --------------------- | -------- | --- | -------------- | -------------------------------- |
 | OP_1ADD               | 0x8b     | in  | out            | 栈顶值加1                            |
 | OP_1SUB               | 0x8c     | in  | out            | 栈顶值减1                            |
-| *OP_2MUL*             | 0x8d     | in  | out            | 栈顶值乘2                            |
-| *OP_2DIV*             | 0x8e     | in  | out            | 栈顶值除2                            |
+| *OP_2MUL*             | 0x8d     | in  | out            | 栈顶值乘2(此操作码计划在Chronicle版本中重新启用)   |
+| *OP_2DIV*             | 0x8e     | in  | out            | 栈顶值除2(此操作码计划在Chronicle版本中重新启用)   |
 | OP_NEGATE             | 0x8f     | in  | out            | 栈顶值符号取反                          |
 | OP_ABS                | 0x90     | in  | out            | 栈顶值符号取正                          |
 | OP_NOT                | 0x91     | in  | out            | 如果栈顶值为0 或1，则输出1或0；否则输出0          |
@@ -111,7 +111,7 @@
 | OP_MAX                | 0xa4     | a b | out            | 输出栈顶两项中较大的一项                     |
 | OP_WITHIN             | 0xa5     | a b | out            | 如果第三项的数值介于前两项之间，则输出1，否则输出为0      |
 
-## 加密和散列操作
+## 加密和哈希操作
 
 | 符号                     | 值 (十六进制) | 输入                                                                           | 输出             | 描述                                                                                                                                                                               |
 | ---------------------- | -------- | ---------------------------------------------------------------------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -122,7 +122,7 @@
 | OP_HASH256             | 0xaa     | in                                                                           | hash           | 栈顶元素用SHA-256 算法HASH 两次                                                                                                                                                           |
 | OP_CODESEPARATOR       | 0xab     | Nothing                                                                      | Nothing        | 标记已进行签名验证的数据。All of the signature checking words will only match signatures to the data after the most recently-executed OP_CODESEPARATOR.                                       |
 | OP_CHECKSIG            | 0xac     | sig pubkey                                                                   | True / false   | 交易用的签名必须是哈希值和公钥的有效签名，如果为真，则返回1，否则为0。整个事务的输出、输入和脚本(从最近执行的 op_codeseparator 到最后)都取哈希值。Op_checksig 使用的签名必须是此哈希值。                                                                    |
-| OP_CHECKSIGVERIFY      | 0xad     | sig pubkey                                                                   | Nothing / fail | 与CHECKSIG 一样，但之后运行OP_VERIFY                                                                                                                                                      |
+| OP_CHECKSIGVERIFY      | 0xad     | sig pubkey                                                                   | Nothing / fail | 与CHECKSIG 一样，但之后运行OP_VERIFY, 栈顶元素移除。                                                                                                                                             |
 | OP_CHECKMULTISIG       | 0xae     | x sig1 sig2 ... <number of signatures> pub1 pub2 <number of public keys>     | True / False   | 对于每对签名和公钥运行CHECKSIG。所有的签名要与公钥匹配。实现中存在一个BUG，会从堆栈中弹出一个前缀为OP_0的值。如果公钥无法进行任何签名比较，就不会再次检查它们，所以必须使用与它们相应的公钥在 scriptPubKey 或 redeemScript 中相同的顺序将签名放在 scriptSig 中。如果所有签名都有效，则返回1，否则返回0。 |
 | OP_CHECKMULTISIGVERIFY | 0xaf     | x sig1 sig2 ... <number of signatures> pub1 pub2 ... <number of public keys> | Nothing / fail | 与CHECKMULTISIG 一样，但之后运行OP_VERIFY                                                                                                                                                 |
 
