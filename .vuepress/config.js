@@ -80,7 +80,14 @@ module.exports = {
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
     'vuepress-plugin-table-of-contents',
-    'latex',
+    '@maginapp/vuepress-plugin-flowchart',
+        {
+          openMarker: '```mermaid',
+          closeMarker: '```',
+          scondMarker: 'flowchat',
+          ignoreSecondLine: false
+        },
+    'vuepress-plugin-mermaidjs',
     'vuepress-plugin-mathjax',
       {
         target: 'svg',
@@ -93,7 +100,7 @@ module.exports = {
   markdown: {
     extendMarkdown: md => {
       // use more markdown-it plugins!
-      md.use(require('markdown-it-texmath'))
+      //md.use(require('markdown-it-katex'))
     }
   }
 }
