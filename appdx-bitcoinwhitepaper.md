@@ -113,16 +113,29 @@
 
 写为如下C语言代码：
 
-`#include double AttackerSuccessProbability(double q, int z){double p = 1.0 - q;double lambda = z * (q / p);double sum = 1.0;int i, k;for (k = 0; k <= z; k++){double poisson = exp(-lambda);for (i = 1; i <= k; i++)poisson *= lambda / i;sum -= poisson * (1 - pow(q / p, z - k));}return sum;}`
-
 ```c
-#include double AttackerSuccessProbability(double q, int z){double p = 1.0 - q;double lambda = z * (q / p);double sum = 1.0;int i, k;for (k = 0; k <= z; k++){double poisson = exp(-lambda);for (i = 1; i <= k; i++)poisson *= lambda / i;sum -= poisson * (1 - pow(q / p, z - k));}return sum;}`
+#include <math.h>
+double AttackerSuccessProbability(double q, int z)
+{
+    double p = 1.0 - q;
+    double lambda = z * (q / p);
+    double sum = 1.0;
+    int i, k;
+    for (k = 0; k <= z; k++)
+    {
+        double poisson = exp(-lambda);
+        for (i = 1; i <= k; i++)
+            poisson *= lambda / i;
+        sum -= poisson * (1 - pow(q / p, z - k));
+    }
+    return sum;
+}
 ```
 
 
 
 对其进行运算，我们可以得到如下的概率结果，发现概率对z值呈指数下降。
-
+```
 当q=0.1时
 z=0 P=1.0000000
 z=1 P=0.2045873
@@ -160,7 +173,7 @@ q=0.30 z=24
 q=0.35 z=41
 q=0.40 z=89
 q=0.45 z=340
-
+```
 ## 12.结论
 
 我们在此提出了一种不需要信用中介的电子支付系统。我们首先讨论了通常的电子货币的电子签名原理，虽然这种系统为所有权提供了强有力的控制，但是不足以防止双重支付。为了解决这个问题，我们提出了一种采用工作量证明机制的点对点网络来记录交易的公开信息，只要诚实的节点能够控制绝大多数的CPU计算能力，就能使得攻击者事实上难以改变交易记录。该网络的强健之处在于它结构上的简洁性。节点之间的工作大部分是彼此独立的，只需要很少的协同。每个节点都不需要明确自己的身份，由于交易信息的流动路径并无任何要求，所以只需要尽其最大努力传播即可。节点可以随时离开网络，而想重新加入网络也非常容易，因为只需要补充接收离开期间的工作量证明链条即可。节点通过自己的CPU计算力进行投票，表决他们对有效区块的确认，他们不断延长有效的区块链来表达自己的确认，并拒绝在无效的区块之后延长区块以表示拒绝。本框架包含了一个P2P电子货币系统所需要的全部规则和激励措施。
