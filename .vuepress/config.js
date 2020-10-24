@@ -15,6 +15,8 @@ module.exports = {
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
   ],
 
+  base: '/MasterBitcoinSV/',
+
   // theme: 'vdoing',
   // themeConfig: {
   //   sidebar: 'structuring' //  'structuring' | { mode: 'structuring', collapsable: Boolean} | 'auto' | 自定义
@@ -31,6 +33,10 @@ module.exports = {
     editLinkText: '',
     lastUpdated: false,
     nav: [
+      {
+        text: "Github",
+        link: "https://github.com/baryon/MasterBitcoinSV"
+      }
     ],
     sidebar: {
       "/": [
