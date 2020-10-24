@@ -1,0 +1,25 @@
+{
+  "name": "masterbitcoinsv",
+  "version": "0.0.1",
+  "description": "Master Bitcoin SV",
+  "main": "index.js",
+  "authors": {
+    "name": "LI Long",
+    "email": "lilong@gmail.com"
+  },
+  "repository": "https://github.com/baryon/masterbitcoinsv",
+  "scripts": {
+    "dev": "vuepress dev .  --temp .temp",
+    "build": "vuepress build ."
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.7.1",
+    "@vuepress/plugin-medium-zoom": "^1.7.1",
+    "markdown-it-texmath": "^0.8.0",
+    "vuepress": "^1.5.3",
+    "vuepress-plugin-latex": "^0.1.3",
+    "vuepress-plugin-mathjax": "^1.2.8",
+    "vuepress-plugin-table-of-contents": "^1.1.7"
+  }
+}
