@@ -27,14 +27,10 @@ module.exports = {
   themeConfig: {
     repo: 'https://github.com/baryon/MasterBitcoinSV',
     editLinks: true,
-    docsDir: '/',
+    docsDir: 'src',
     editLinkText: '',
     lastUpdated: false,
     nav: [
-      {
-        text: "Github",
-        link: "https://github.com/baryon/MasterBitcoinSV"
-      }
     ],
     sidebar: {
       "/": [
