@@ -10,7 +10,8 @@
   "repository": "https://github.com/baryon/masterbitcoinsv",
   "scripts": {
     "dev": "vuepress dev .  --temp .temp",
-    "build": "vuepress build ."
+    "build": "vuepress build .",
+    "deploy": "bash deploy.sh"
   },
   "license": "MIT",
   "devDependencies": {
