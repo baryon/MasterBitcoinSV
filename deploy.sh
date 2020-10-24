@@ -7,7 +7,7 @@ set -e
 npm run build
 
 # 进入生成的文件夹
-cd .vuepress/dist
+cd src/.vuepress/dist
 
 # deploy to github
 if [ -z "$ACCESS_TOKEN" ]; then
@@ -25,4 +25,4 @@ git commit -m "${msg}"
 git push -f $githubUrl master:gh-pages # 推送到github
 
 cd - # 退回开始所在目录
-rm -rf docs/.vuepress/dist
+rm -rf src/.vuepress/dist 

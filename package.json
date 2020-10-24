@@ -9,13 +9,12 @@
   },
   "repository": "https://github.com/baryon/masterbitcoinsv",
   "scripts": {
-    "dev": "vuepress dev .  --temp .temp",
-    "build": "vuepress build .",
+    "dev": "vuepress dev src  --temp .temp",
+    "build": "vuepress build src",
     "deploy": "bash deploy.sh"
   },
   "license": "MIT",
   "devDependencies": {
-    "@maginapp/vuepress-plugin-flowchart": "^1.0.2",
     "@vuepress/plugin-back-to-top": "^1.7.1",
     "@vuepress/plugin-medium-zoom": "^1.7.1",
     "vue-class-component": "^7.2.6",
