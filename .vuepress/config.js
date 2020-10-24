@@ -1,4 +1,4 @@
-const { description } = require('../package')
+const { description } = require( '../package' )
 
 module.exports = {
   title: '精通比特币SV',
@@ -10,9 +10,13 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/config/#head
    */
   head: [
-    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
-    ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
+    [ 'meta', { name: 'theme-color', content: '#3eaf7c' } ],
+    [ 'meta', { name: 'apple-mobile-web-app-capable', content: 'yes' } ],
+    [ 'meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' } ],
+    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css', crossorigin: 'anonymous' }],
+
+    ['link', { rel:"stylesheet", href:"https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css", integrity:"sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X", crossorigin:"anonymous"} ]
+
   ],
 
   base: '/MasterBitcoinSV/',
@@ -80,27 +84,31 @@ module.exports = {
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
     'vuepress-plugin-table-of-contents',
-    '@maginapp/vuepress-plugin-flowchart',
-        {
-          openMarker: '```mermaid',
-          closeMarker: '```',
-          scondMarker: 'flowchat',
-          ignoreSecondLine: false
-        },
     'vuepress-plugin-mermaidjs',
-    'vuepress-plugin-mathjax',
+    [
+      "md-enhance",
       {
-        target: 'svg',
-        macros: {
-          '*': '\\times',
-        },
+        // 启用下角标功能
+        sub: true,
+        // 启用上角标
+        sup: true,
+        // 启用自定义对齐
+        align: true,
+        // 启用脚注
+        footnote: true,
+        // 开启标记
+        mark: true,
+        // 启用流程图
+        flowchart: true,
+        // 启用 TeX 支持
+        tex: true
       },
+    ],
   ],
 
   markdown: {
     extendMarkdown: md => {
       // use more markdown-it plugins!
-      //md.use(require('markdown-it-katex'))
     }
   }
 }
