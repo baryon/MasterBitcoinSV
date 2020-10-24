@@ -13,6 +13,11 @@ cd .vuepress/dist
 if [ -z "$ACCESS_TOKEN" ]; then
   msg='deploy'
   githubUrl=git@github.com:baryon/MasterBitcoinSV.git
+else
+  msg='来自github action的自动部署'
+  githubUrl=https://baryon:${ACCESS_TOKEN}@github.com/baryon/MasterBitcoinSV.git
+  git config --global user.name "baryon"
+  git config --global user.email "lilong@gmail.com"
 fi
 git init
 git add -A
