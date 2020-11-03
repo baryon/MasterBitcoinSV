@@ -13,8 +13,16 @@ module.exports = {
     [ 'meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' } ],
     [ 'link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css', crossorigin: 'anonymous' } ],
 
-    [ 'link', { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css", integrity: "sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X", crossorigin: "anonymous" } ]
+    [ 'link', { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css", integrity: "sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X", crossorigin: "anonymous" } ],
 
+    [
+      "script",
+      {
+        "data-ad-client": "ca-pub-2028497727822047",
+        async: true,
+        src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+      }
+    ]
   ],
 
   base: '/MasterBitcoinSV/',
