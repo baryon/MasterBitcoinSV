@@ -23,10 +23,10 @@
 | ----------- | -------- | ------------ | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | OP_NOP      | 0x61     | Nothing      | Nothing          | 无操作                                                                                                                                                                                                                                    |
 | OP_VER      | 0x62     | Nothing      | Protocol version | 将此事务所依据的协议版本放到堆栈上。(此操作码计划在Chronicle版本中重新启用)                                                                                                                                                                                            |
-| OP_IF       | 0x63     |              |                  | 如果栈项元素值不为FALSE，在IF和ELSE之间的语句将被执行。如果如果栈项元素值为FALSE，在ELSE和ENDIF之间的语句将被执行。栈顶元素被删除。 IF [statements>ELSE [statements]ENDIF                                                                                                       |
-| OP_NOTIF    | 0x64     |              |                  | 如果栈项元素值为FALSE，在IF和ELSE之间的语句将被执行。如果如果栈项元素值不为FALSE，在ELSE和ENDIF之间的语句将被执行。栈顶元素被删除。 IF [statements>ELSE [statements]ENDIF                                                                                                       |
-| OP_VERIF    | 0x65     |              |                  | 如果栈项元素值等于交易执行时的协议版本，在IF和ELSE之间的语句将被执行。如果如果栈项元素值不等于交易执行时的协议版本，在ELSE和ENDIF之间的语句将被执行。栈顶元素被删除。(此操作码计划在Chronicle版本中重新启用)  IF [statements>ELSE [statements]ENDIF                                                                 |
-| OP_VERNOTIF | 0x66     |              |                  | 如果栈项元素值不等于交易执行时的协议版本，在IF和ELSE之间的语句将被执行。如果如果栈项元素值等于交易执行时的协议版本，在ELSE和ENDIF之间的语句将被执行。栈顶元素被删除。(此操作码计划在Chronicle版本中重新启用) IF [statements>ELSE [statements]ENDIF                                                                 |
+| OP_IF       | 0x63     |              |                  | 如果栈项元素值不为FALSE，在IF和ELSE之间的语句将被执行。如果如果栈项元素值为FALSE，在ELSE和ENDIF之间的语句将被执行。栈顶元素被删除。 IF [statements>ELSE [statements]ENDIF                                                                                                                   |
+| OP_NOTIF    | 0x64     |              |                  | 如果栈项元素值为FALSE，在IF和ELSE之间的语句将被执行。如果如果栈项元素值不为FALSE，在ELSE和ENDIF之间的语句将被执行。栈顶元素被删除。 IF [statements>ELSE [statements]ENDIF                                                                                                                   |
+| OP_VERIF    | 0x65     |              |                  | 如果栈项元素值等于交易执行时的协议版本，在IF和ELSE之间的语句将被执行。如果如果栈项元素值不等于交易执行时的协议版本，在ELSE和ENDIF之间的语句将被执行。栈顶元素被删除。(此操作码计划在Chronicle版本中重新启用)  IF [statements>ELSE [statements]ENDIF                                                                             |
+| OP_VERNOTIF | 0x66     |              |                  | 如果栈项元素值不等于交易执行时的协议版本，在IF和ELSE之间的语句将被执行。如果如果栈项元素值等于交易执行时的协议版本，在ELSE和ENDIF之间的语句将被执行。栈顶元素被删除。(此操作码计划在Chronicle版本中重新启用) IF [statements>ELSE [statements]ENDIF                                                                              |
 | OP_ELSE     | 0x67     |              |                  | 如果前述的OP_IF 或OP_NOTIF 或OP_ELSE 未被执行，这些语句就会被执行                                                                                                                                                                                           |
 | OP_ENDIF    | 0x68     |              |                  | 终止OP_IF, OP_NOTIF, OP_ELSE 区块                                                                                                                                                                                                          |
 | OP_VERIFY   | 0x69     | True / False | Nothing / Fail   | 如果栈项元素值非真，则标记交易无效。栈顶元素被删除。                                                                                                                                                                                                             |
@@ -34,27 +34,27 @@
 
 ## 堆栈操作符
 
-| 符号              | 值 (十六进制) | 输入                  | 输出                 | 描述                   |
-| --------------- | -------- | ------------------- | ------------------ | -------------------- |
-| OP_TOALTSTACK   | 0x6b     | x1                  | (alt)x1            | 从主堆栈中取出元素，推入辅堆栈。     |
-| OP_FROMALTSTACK | 0x6c     | (alt)x1             | x1                 | 从辅堆栈中取出元素，推入主堆栈      |
-| OP_2DROP        | 0x6d     | x1 x2               | Nothing            | 移除栈顶两个元素             |
-| OP_2DUP         | 0x6e     | x1 x2               | x1 x2 x1 x2        | 复制栈顶两个元素             |
-| OP_3DUP         | 0x6f     | x1 x2 x3            | x1 x2 x3 x1 x2 x3  | 复制栈顶三个元素             |
-| OP_2OVER        | 0x70     | x1 x2 x3 x4         | x1 x2 x3 x4 x1 x2  | 把栈底的第三、第四个元素拷贝到栈顶    |
-| OP_2ROT         | 0x71     | x1 x2 x3 x4 x5 x6   | x3 x4 x5 x6 x1 x2  | 移动第五、第六元素到栈顶         |
-| OP_2SWAP        | 0x72     | x1 x2 x3 x4         | x3 x4 x1 x2        | 将栈顶的两个元素进行交换         |
-| OP_IFDUP        | 0x73     | x                   | x / x x            | 如果栈项元素值不为0，复制该元素值    |
-| OP_DEPTH        | 0x74     | Nothing             | Stack size       | 计算堆栈元素的数量，并将值放置在堆栈顶部 |
-| OP_DROP         | 0x75     | x                   | Nothing            | 删除栈顶元素               |
-| OP_DUP          | 0x76     | x                   | x x                | 复制栈顶元素               |
-| OP_NIP          | 0x77     | x1 x2               | x2                 | 删除栈顶的下一个元素           |
-| OP_OVER         | 0x78     | x1 x2               | x1 x2 x1           | 复制栈顶的下一个元素到栈顶        |
+| 符号              | 值 (十六进制) | 输入                | 输出                 | 描述                   |
+| --------------- | -------- | ----------------- | ------------------ | -------------------- |
+| OP_TOALTSTACK   | 0x6b     | x1                | (alt)x1            | 从主堆栈中取出元素，推入辅堆栈。     |
+| OP_FROMALTSTACK | 0x6c     | (alt)x1           | x1                 | 从辅堆栈中取出元素，推入主堆栈      |
+| OP_2DROP        | 0x6d     | x1 x2             | Nothing            | 移除栈顶两个元素             |
+| OP_2DUP         | 0x6e     | x1 x2             | x1 x2 x1 x2        | 复制栈顶两个元素             |
+| OP_3DUP         | 0x6f     | x1 x2 x3          | x1 x2 x3 x1 x2 x3  | 复制栈顶三个元素             |
+| OP_2OVER        | 0x70     | x1 x2 x3 x4       | x1 x2 x3 x4 x1 x2  | 把栈底的第三、第四个元素拷贝到栈顶    |
+| OP_2ROT         | 0x71     | x1 x2 x3 x4 x5 x6 | x3 x4 x5 x6 x1 x2  | 移动第五、第六元素到栈顶         |
+| OP_2SWAP        | 0x72     | x1 x2 x3 x4       | x3 x4 x1 x2        | 将栈顶的两个元素进行交换         |
+| OP_IFDUP        | 0x73     | x                 | x / x x            | 如果栈项元素值不为0，复制该元素值    |
+| OP_DEPTH        | 0x74     | Nothing           | Stack size         | 计算堆栈元素的数量，并将值放置在堆栈顶部 |
+| OP_DROP         | 0x75     | x                 | Nothing            | 删除栈顶元素               |
+| OP_DUP          | 0x76     | x                 | x x                | 复制栈顶元素               |
+| OP_NIP          | 0x77     | x1 x2             | x2                 | 删除栈顶的下一个元素           |
+| OP_OVER         | 0x78     | x1 x2             | x1 x2 x1           | 复制栈顶的下一个元素到栈顶        |
 | OP_PICK         | 0x79     | xn ... x2 x1 x0 n | xn ... x2 x1 x0 xn | 把堆栈的第n 个元素拷贝到栈顶      |
 | OP_ROLL         | 0x7a     | xn ... x2 x1 x0 n | ... x2 x1 x0 xn    | 把堆栈的第n 个元素移动到栈顶      |
-| OP_ROT          | 0x7b     | x1 x2 x3            | x2 x3 x1           | 翻转栈顶的三个元素            |
-| OP_SWAP         | 0x7c     | x1 x2               | x2 x1              | 栈顶的三个元素交换            |
-| OP_TUCK         | 0x7d     | x1 x2               | x2 x1 x2           | 拷贝栈顶元素并插入到栈顶第二个元素之后  |
+| OP_ROT          | 0x7b     | x1 x2 x3          | x2 x3 x1           | 翻转栈顶的三个元素            |
+| OP_SWAP         | 0x7c     | x1 x2             | x2 x1              | 栈顶的三个元素交换            |
+| OP_TUCK         | 0x7d     | x1 x2             | x2 x1 x2           | 拷贝栈顶元素并插入到栈顶第二个元素之后  |
 
 ## 字符串操作
 
@@ -103,26 +103,26 @@
 | OP_NUMEQUAL           | 0x9c     | a b | out            | 两项相等则输出1，否则输出为0                  |
 | OP_NUMEQUALVERIFY     | 0x9d     | a b | Nothing / fail | 与NUMEQUAL 相同，如结果为0， 运行OP_VERIFY  |
 | OP_NUMNOTEQUAL        | 0x9e     | a b | out            | 如果栈顶两项不是相等数的话，则输出1，否则输出为0        |
-| OP_LESSTHAN           | 0x9f     | a b | out            | 如果第二项小于栈顶项，则输出1，否则输出为0  a<b      |
-| OP_GREATERTHAN        | 0xa0     | a b | out            | 如果第二项大于栈顶项，则输出1 a>b              |
-| OP_LESSTHANOREQUAL    | 0xa1     | a b | out            | 如果第二项小于或等于第一项，则输出1 a<=b          |
-| OP_GREATERTHANOREQUAL | 0xa2     | a b | out            | 如果第二项大于或等于第一项，则输出1 a>=b          |
+| OP_LESSTHAN           | 0x9f     | a b | out            | 如果栈顶数第二项小于栈顶项，则输出1，否则输出为0  a<b   |
+| OP_GREATERTHAN        | 0xa0     | a b | out            | 如果栈顶数第二项大于栈顶项，则输出1 a>b           |
+| OP_LESSTHANOREQUAL    | 0xa1     | a b | out            | 如果栈顶数第二项小于或等于第一项，则输出1 a<=b       |
+| OP_GREATERTHANOREQUAL | 0xa2     | a b | out            | 如果栈顶数第二项大于或等于第一项，则输出1 a>=b       |
 | OP_MIN                | 0xa3     | a b | out            | 输出栈顶两项中较小的一项                     |
 | OP_MAX                | 0xa4     | a b | out            | 输出栈顶两项中较大的一项                     |
 | OP_WITHIN             | 0xa5     | a b | out            | 如果第三项的数值介于前两项之间，则输出1，否则输出为0      |
 
 ## 加密和哈希操作
 
-| 符号                     | 值 (十六进制) | 输入                                                                           | 输出             | 描述                                                                                                                                                                               |
-| ---------------------- | -------- | ---------------------------------------------------------------------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| OP_RIPEMD160           | 0xa6     | in                                                                           | hash           | 返回栈顶元素的RIPEMD160 哈希值                                                                                                                                                             |
-| OP_SHA1                | 0xa7     | in                                                                           | hash           | 返回栈顶元素SHA1 哈希值                                                                                                                                                                   |
-| OP_SHA256              | 0xa8     | in                                                                           | hash           | 返回栈顶元素SHA256 哈希值                                                                                                                                                                 |
-| OP_HASH160             | 0xa9     | in                                                                           | hash           | 栈顶元素进行两次HASH，先用SHA-256，再用RIPEMD-160                                                                                                                                              |
-| OP_HASH256             | 0xaa     | in                                                                           | hash           | 栈顶元素用SHA-256 算法HASH 两次                                                                                                                                                           |
-| OP_CODESEPARATOR       | 0xab     | Nothing                                                                      | Nothing        | 标记已进行签名验证的数据。All of the signature checking words will only match signatures to the data after the most recently-executed OP_CODESEPARATOR.                                       |
-| OP_CHECKSIG            | 0xac     | sig pubkey                                                                   | True / false   | 交易用的签名必须是哈希值和公钥的有效签名，如果为真，则返回1，否则为0。整个事务的输出、输入和脚本(从最近执行的 op_codeseparator 到最后)都取哈希值。Op_checksig 使用的签名必须是此哈希值。                                                                    |
-| OP_CHECKSIGVERIFY      | 0xad     | sig pubkey                                                                   | Nothing / fail | 与CHECKSIG 一样，但之后运行OP_VERIFY, 栈顶元素移除。                                                                                                                                             |
+| 符号                     | 值 (十六进制) | 输入                                                                       | 输出             | 描述                                                                                                                                                                               |
+| ---------------------- | -------- | ------------------------------------------------------------------------ | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| OP_RIPEMD160           | 0xa6     | in                                                                       | hash           | 返回栈顶元素的RIPEMD160 哈希值                                                                                                                                                             |
+| OP_SHA1                | 0xa7     | in                                                                       | hash           | 返回栈顶元素SHA1 哈希值                                                                                                                                                                   |
+| OP_SHA256              | 0xa8     | in                                                                       | hash           | 返回栈顶元素SHA256 哈希值                                                                                                                                                                 |
+| OP_HASH160             | 0xa9     | in                                                                       | hash           | 栈顶元素进行两次HASH，先用SHA-256，再用RIPEMD-160                                                                                                                                              |
+| OP_HASH256             | 0xaa     | in                                                                       | hash           | 栈顶元素用SHA-256 算法HASH 两次                                                                                                                                                           |
+| OP_CODESEPARATOR       | 0xab     | Nothing                                                                  | Nothing        | 标记已进行签名验证的数据。All of the signature checking words will only match signatures to the data after the most recently-executed OP_CODESEPARATOR.                                       |
+| OP_CHECKSIG            | 0xac     | sig pubkey                                                               | True / false   | 交易用的签名必须是哈希值和公钥的有效签名，如果为真，则返回1，否则为0。整个事务的输出、输入和脚本(从最近执行的 op_codeseparator 到最后)都取哈希值。Op_checksig 使用的签名必须是此哈希值。                                                                    |
+| OP_CHECKSIGVERIFY      | 0xad     | sig pubkey                                                               | Nothing / fail | 与CHECKSIG 一样，但之后运行OP_VERIFY, 栈顶元素移除。                                                                                                                                             |
 | OP_CHECKMULTISIG       | 0xae     | x sig1 sig2 ... number of signatures pub1 pub2 number of public keys     | True / False   | 对于每对签名和公钥运行CHECKSIG。所有的签名要与公钥匹配。实现中存在一个BUG，会从堆栈中弹出一个前缀为OP_0的值。如果公钥无法进行任何签名比较，就不会再次检查它们，所以必须使用与它们相应的公钥在 scriptPubKey 或 redeemScript 中相同的顺序将签名放在 scriptSig 中。如果所有签名都有效，则返回1，否则返回0。 |
 | OP_CHECKMULTISIGVERIFY | 0xaf     | x sig1 sig2 ... number of signatures pub1 pub2 ... number of public keys | Nothing / fail | 与CHECKMULTISIG 一样，但之后运行OP_VERIFY                                                                                                                                                 |
 

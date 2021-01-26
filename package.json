@@ -15,13 +15,13 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.7.1",
-    "@vuepress/plugin-medium-zoom": "^1.7.1",
+    "@vuepress/plugin-back-to-top": "^1.8.0",
+    "@vuepress/plugin-medium-zoom": "^1.8.0",
     "vue-class-component": "^7.2.6",
-    "vue-property-decorator": "^9.0.2",
-    "vuepress": "^1.5.3",
-    "vuepress-plugin-md-enhance": "^1.4.5",
-    "vuepress-plugin-mermaidjs": "^1.8.0",
+    "vue-property-decorator": "^9.1.2",
+    "vuepress": "^1.8.0",
+    "vuepress-plugin-md-enhance": "^1.9.0",
+    "vuepress-plugin-mermaidjs": "^1.8.1",
     "vuepress-plugin-table-of-contents": "^1.1.7"
   }
 }

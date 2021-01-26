@@ -1,3 +1,5 @@
 .temp
 .vuepress/dist
 src/.vuepress/dist
+node_modules
+.DS_Store

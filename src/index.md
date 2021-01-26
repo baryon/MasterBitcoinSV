@@ -1,15 +1,12 @@
 # 精通比特币SV
 
-
 > 本文基于精通比特币第二版中文翻译稿改写。原稿是云天明区块链乔延宏主编的，来自[MasterBitcoin2CN](https://github.com/tianmingyun/MasterBitcoin2CN) 本文基于 CC BY-SA 4.0 进行修订和更新
-
 
 ::: danger
 
 全文刚刚开始整理，随时更新修改，准确性请自己确认，如本文有误，请及时告知！万分感谢！
 
 :::
-
 
 到底比特币是什么？如何判断？难道我们能做的就是人云亦云？
 
@@ -24,11 +21,7 @@
 为了读者流利阅读，本文在未做声明的情况下大量按照编者对比特币的理解，做了修订。
 原翻译稿的内容说明以及序言等内容移到了附录部分，请原作者和译者谅解。
 
-
-
 本书还在制作做，网络访问链接: [https://baryon.github.io/MasterBitcoinSV/](https://baryon.github.io/MasterBitcoinSV/)
-
-
 
 ## Mastering Bitcoin SV 版权说明
 
