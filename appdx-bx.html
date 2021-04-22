@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>附录F、比特币浏览器命令 | 精通比特币SV</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+    <script data-ad-client="ca-pub-2028497727822047" async="true" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta name="description" content="改写自精通比特币第二版，原版权属于原作者">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/MasterBitcoinSV/assets/css/0.styles.ccf6f871.css" as="style"><link rel="preload" href="/MasterBitcoinSV/assets/js/app.1cc508ac.js" as="script"><link rel="preload" href="/MasterBitcoinSV/assets/js/3.37227c69.js" as="script"><link rel="preload" href="/MasterBitcoinSV/assets/js/17.281cda1b.js" as="script"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/10.466ab898.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/11.49136d61.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/12.2e334333.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/13.404c7e9f.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/14.15b90a1f.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/15.4d492ff6.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/16.a25fc06c.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/18.cd5a8e96.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/19.3d366222.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/20.4da782d1.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/21.7a50fc73.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/22.d8c8068a.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/23.b4051a1e.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/24.0b54f372.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/25.77c62c7f.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/26.7276f704.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/27.8194ac23.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/28.906be128.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/29.487d6557.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/30.e59148dd.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/31.65374195.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/32.1b30d987.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/33.9535960e.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/34.a8d8210d.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/35.bf75033e.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/36.e9dca757.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/37.cf19f129.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/38.d0faccfb.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/39.4ad08d8f.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/4.2f8e84ac.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/40.f102d9f9.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/41.88ac9ca6.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/42.74ff6562.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/43.1c5b3b4c.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/44.84629ca2.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/45.8cb72f7e.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/46.509ca026.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/5.0804d6ab.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/6.411afdf3.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/7.751e9ad2.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/8.f7425502.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/9.e4e96770.js"><link rel="prefetch" href="/MasterBitcoinSV/assets/js/vendors~flowchart.5985ff59.js">
+    <link rel="stylesheet" href="/MasterBitcoinSV/assets/css/0.styles.ccf6f871.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/MasterBitcoinSV/" class="home-link router-link-active"><!----> <span class="site-name">精通比特币SV</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"> <a href="https://github.com/baryon/MasterBitcoinSV" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"> <a href="https://github.com/baryon/MasterBitcoinSV" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/MasterBitcoinSV/" aria-current="page" class="sidebar-link">精通比特币SV</a></li><li><a href="/MasterBitcoinSV/glossary.html" class="sidebar-link">词汇表</a></li><li><a href="/MasterBitcoinSV/ch01.html" class="sidebar-link">第1章 介绍</a></li><li><a href="/MasterBitcoinSV/ch02.html" class="sidebar-link">第2章 比特币工作原理</a></li><li><a href="/MasterBitcoinSV/ch03.html" class="sidebar-link">第3章 Bitcoin SV</a></li><li><a href="/MasterBitcoinSV/ch04.html" class="sidebar-link">第4章 密钥和地址</a></li><li><a href="/MasterBitcoinSV/ch05.html" class="sidebar-link">第5章 钱包</a></li><li><a href="/MasterBitcoinSV/ch05a.html" class="sidebar-link">第5章 补充</a></li><li><a href="/MasterBitcoinSV/ch06.html" class="sidebar-link">第6章 交易</a></li><li><a href="/MasterBitcoinSV/ch06a.html" class="sidebar-link">第6章 补充</a></li><li><a href="/MasterBitcoinSV/ch07.html" class="sidebar-link">第7章 高级交易和脚本</a></li><li><a href="/MasterBitcoinSV/ch08.html" class="sidebar-link">第8章 比特币网络</a></li><li><a href="/MasterBitcoinSV/ch09.html" class="sidebar-link">第9章 区块链</a></li><li><a href="/MasterBitcoinSV/ch10.html" class="sidebar-link">第10章 挖矿和共识</a></li><li><a href="/MasterBitcoinSV/ch11.html" class="sidebar-link">第11章 比特币安全</a></li><li><a href="/MasterBitcoinSV/ch12.html" class="sidebar-link">第12章 区块链应用</a></li><li><a href="/MasterBitcoinSV/appdx-bitcoinwhitepaper.html" class="sidebar-link">附录A-1、比特币白皮书：一种点对点的电子现金系统</a></li><li><a href="/MasterBitcoinSV/bitcoin-whitepaper-cn.html" class="sidebar-link">附录A-2、比特币白皮书（李笑来中英文对照版）</a></li><li><a href="/MasterBitcoinSV/appdx-scriptops.html" class="sidebar-link">附录B、交易脚本语言操作符，常量和符号</a></li><li><a href="/MasterBitcoinSV/appdx-bips.html" class="sidebar-link">附录C、比特币改进提案（BIPs）</a></li><li><a href="/MasterBitcoinSV/appdx-bitcore.html" class="sidebar-link">附录D Bitcore</a></li><li><a href="/MasterBitcoinSV/appdx-pycoin.html" class="sidebar-link">附录E、pycoin</a></li><li><a href="/MasterBitcoinSV/appdx-bx.html" aria-current="page" class="active sidebar-link">附录F、比特币浏览器命令</a></li><li><a href="/MasterBitcoinSV/second_edition_changes.html" class="sidebar-link">第二版更新内容</a></li><li><a href="/MasterBitcoinSV/README-ytm2nd.html" class="sidebar-link">精通比特币第二版中文翻译开篇</a></li><li><a href="/MasterBitcoinSV/preface.html" class="sidebar-link">原版序言</a></li><li><a href="/MasterBitcoinSV/cn-preface.html" class="sidebar-link">中文版序言</a></li><li><a href="/MasterBitcoinSV/trans-preface.html" class="sidebar-link">译者序</a></li><li><a href="/MasterBitcoinSV/SUMMARY.html" class="sidebar-link">总结</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="附录f、比特币浏览器命令"><a href="#附录f、比特币浏览器命令" class="header-anchor">#</a> 附录F、比特币浏览器命令</h1> <p>Bitcoin Explorer（bx）是一个命令行工具，提供了各种用于密钥管理和交易构建的命令。 它是libbitcoin比特币库的一部分。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Usage: bx COMMAND [--help]
+
+
+Info: The bx commands are:
+
+
+address-decode
+address-embed
+address-encode
+address-validate
+base16-decode
+base16-encode
+base58-decode
+base58-encode
+base58check-decode
+base58check-encode
+base64-decode
+base64-encode
+bitcoin160
+bitcoin256
+btc-to-satoshi
+ec-add
+ec-add-secrets
+ec-multiply
+ec-multiply-secrets
+ec-new
+ec-to-address
+ec-to-public
+ec-to-wif
+fetch-balance
+fetch-header
+fetch-height
+fetch-history
+fetch-stealth
+fetch-tx
+fetch-tx-index
+hd-new
+hd-private
+hd-public
+hd-to-address
+hd-to-ec
+hd-to-public
+hd-to-wif
+help
+input-set
+input-sign
+input-validate
+message-sign
+message-validate
+mnemonic-decode
+mnemonic-encode
+ripemd160
+satoshi-to-btc
+script-decode
+script-encode
+script-to-address
+seed
+send-tx
+send-tx-node
+send-tx-p2p
+settings
+sha160
+sha256
+sha512
+stealth-decode
+stealth-encode
+stealth-public
+stealth-secret
+stealth-shared
+tx-decode
+tx-encode
+uri-decode
+uri-encode
+validate-tx
+watch-address
+wif-to-ec
+wif-to-public
+wrap-decode
+wrap-encode
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br></div></div><p>更多信息参见<a href="#">Bitcoin Explorer homepage</a> 和 <a href="#">Bitcoin Explorer user documentation</a></p> <p>bx命令使用示例</p> <p>我们来看一些使用Bitcoin Explorer命令来测试密钥和地址的例子。</p> <p>使用种子命令生成随机“种子”值，该种子命令使用操作系统的随机数生成器。 将种子传递到ec-new命令以生成新的私钥。 我们将标准输出保存到文件private_key中：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ bx seed | bx ec-new &gt; private_key
+$ cat private_key
+73096ed11ab9f1db6135857958ece7d73ea7c30862145bcc4bbc7649075de474
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>现在，使用ec-to-public命令从私钥生成公钥。 我们将private_key文件传递到标准输入并将命令的标准输出保存到新文件public_key中：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ bx ec-to-public &lt; private_key &gt; public_key
+$ cat public_key
+02fca46a6006a62dfdd2dbb2149359d0d97a04f430f12a7626dd409256c12be500
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>我们可以使用ec-to-address命令将public_key重新格式化为一个地址。 我们将public_key传递给标准输入：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ bx ec-to-address &lt; public_key
+17re1S4Q8ZHyCP8Kw7xQad1Lr6XUzWUnkG
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>以这种方式产生的密钥产生零型非确定性钱包。 这意味着每个密钥都是由一个独立的种子生成的。 Bitcoin Explorer命令也可以根据BIP-32确定性地生成密钥。 在这种情况下，从种子创建“主”键，然后确定性地扩展以产生一个子项的树，从而产生一个2类确定性钱包。</p> <p>首先，我们使用seed和hd-new命令生成一个主密钥，该密钥将被用作导出密钥层次结构的基础：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ bx seed &gt; seed
+$ cat seed
+eb68ee9f3df6bd4441a9feadec179ff1
+
+
+$ bx hd-new &lt; seed &gt; master
+$ cat master
+xprv9s21ZrQH143K2BEhMYpNQoUvAgiEjArAVaZaCTgsaGe6LsAnwubeiTcDzd23mAoyizm9cApe51gNfLMkBqkYoWWMCRwzfuJk8RwF1SVEpAQ
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>我们现在使用hd-private命令在帐户中生成一个强化的“帐户”键和两个私钥序列：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ bx hd-private --hard &lt; master &gt; account
+$ cat account
+xprv9vkDLt81dTKjwHB8fsVB5QK8cGnzveChzSrtCfvu3aMWvQaThp59ueufuyQ8Qi3qpjk4aKsbmbfxwcgS8PYbgoR2NWHeLyvg4DhoEE68A1n
+
+
+$ bx hd-private --index 0 &lt; account
+xprv9xHfb6w1vX9xgZyPNXVgAhPxSsEkeRcPHEUV5iJcVEsuUEACvR3NRY3fpGhcnBiDbvG4LgndirDsia1e9F3DWPkX7Tp1V1u97HKG1FJwUpU
+
+
+$ bx hd-private --index 1 &lt; account
+xprv9xHfb6w1vX9xjc8XbN4GN86jzNAZ6xHEqYxzbLB4fzHFd6VqCLPGRZFsdjsuMVERadbgDbziCRJru9n6tzEWrASVpEdrZrFidt1RDfn4yA3
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>接下来，我们使用hd-public命令来生成两个公钥的相应序列：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ bx hd-public --index 0 &lt; account
+xpub6BH1zcTuktiFu43rUZ2gXqLgzu5F3tLEeTQ5t6iE3aQtM2VMTxMcyLN9fYHiGhGpQe9QQYmqL2eYPFJ3vezHz5wzaSW4FiGrseNDR4LKqTy
+
+
+$ bx hd-public --index 1 &lt; account
+xpub6BH1zcTuktiFx6CzhPbGjG3UYQ13WR16CmtbPiagEKpEVtpyjshWyMaMV1cn7nUPUkgQHPVXJVqsrA8xWbGQDhohEcDFTEYMvYzwRD7Juf8
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>公钥也可以使用hd-to-public命令从其相应的私钥派生：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ bx hd-private --index 0 &lt; account | bx hd-to-public
+xpub6BH1zcTuktiFu43rUZ2gXqLgzu5F3tLEeTQ5t6iE3aQtM2VMTxMcyLN9fYHiGhGpQe9QQYmqL2eYPFJ3vezHz5wzaSW4FiGrseNDR4LKqTy
+
+
+$ bx hd-private --index 1 &lt; account | bx hd-to-public
+xpub6BH1zcTuktiFx6CzhPbGjG3UYQ13WR16CmtbPiagEKpEVtpyjshWyMaMV1cn7nUPUkgQHPVXJVqsrA8xWbGQDhohEcDFTEYMvYzwRD7Juf8
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>我们可以在确定性链中产生几乎无限数量的密钥，全部来源于单个种子。 这种技术用于许多钱包应用程序中以生成可以使用单个种子值进行备份和恢复的密钥。 每次创建一个新的密钥时，这比将其所有随机生成的密钥备份在一起更容易。</p> <p>可以使用助记符编码命令对种子进行编码：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ bx hd-mnemonic &lt; seed &gt; words
+adore repeat vision worst especially veil inch woman cast recall dwell appreciate
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>然后可以使用mnemonic-decode命令对种子进行解码：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ bx mnemonic-decode &lt; words
+eb68ee9f3df6bd4441a9feadec179ff1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>助记符编码可以使种子更容易记录甚至记住。</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/baryon/MasterBitcoinSV/edit/master/src/appdx-bx.md" target="_blank" rel="noopener noreferrer">Edit this page</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/MasterBitcoinSV/appdx-pycoin.html" class="prev">
+        附录E、pycoin
+      </a></span> <span class="next"><a href="/MasterBitcoinSV/second_edition_changes.html">
+        第二版更新内容
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/MasterBitcoinSV/assets/js/app.1cc508ac.js" defer></script><script src="/MasterBitcoinSV/assets/js/3.37227c69.js" defer></script><script src="/MasterBitcoinSV/assets/js/17.281cda1b.js" defer></script>
+  </body>
+</html>
